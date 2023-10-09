@@ -429,6 +429,7 @@ export default {
             filter: {
                 price: '',
                 level: '',
+                category: ''
             }
         };
     },
