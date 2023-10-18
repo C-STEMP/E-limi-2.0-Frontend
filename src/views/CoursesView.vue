@@ -507,6 +507,7 @@ import BaseNav from "../components/navbars/BaseNav.vue";
 import BaseFooter from "../components/footers/BaseFooter.vue";
 
 import CategoryService from "../services/category";
+import CoursesService from "../services/courses";
 
 export default {
     components: {
@@ -516,6 +517,7 @@ export default {
     data() {
         return {
             categories: [],
+            courses: [],
             searchString: "",
             layout: "list",
             filter: {
@@ -534,9 +536,20 @@ export default {
         CategoryService.getCategories()
             .then((categories) => {
                 this.categories = categories;
+                console.log(categories);
             })
             .catch((error) => {
             });
+        CoursesService.getCourses().then(
+            (courses) => {
+                this.courses = courses;
+                console.log(courses);
+            }
+        ).catch(
+            err => {
+                console.log(err.message);
+            }
+        )
     },
 };
 </script>

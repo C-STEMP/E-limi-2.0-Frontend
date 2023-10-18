@@ -9,7 +9,6 @@ class CategoryService {
     const { data: result } = await axios.get(`${API_URL}catalog/categories`);
 
     const { data: categories } = result;
-
     return categories;
   }
 }
