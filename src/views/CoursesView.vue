@@ -140,7 +140,7 @@
                             </div>
                         </div>
                         <div v-if="layout === 'list'" class="row">
-                            <div class="row">
+                            <div v-for="course in courses" class="row">
                                 <div class="col-md-12 ms-auto me-auto">
                                     <div class="card card-blog mt-5 p-2">
                                         <div class="row">
@@ -162,13 +162,11 @@
                                             </div>
                                             <div class="col-md-7 my-auto ms-md-3 mt-md-auto mt-4">
                                                 <h3 class="w-100 text-truncate">
-                                                    <a href="javascript:;" class="text-dark font-weight-normal">Miami raised
-                                                        $65 million for pet sittingsitting
-                                                        sitting</a>
+                                                    <a href="javascript:;" class="text-dark font-weight-normal"> {{
+                                                        course.title }}</a>
                                                 </h3>
-                                                <p class="text-truncate h">
-                                                    Finding temporary housing for dog should be as easy as
-                                                    renting an Airbnb.
+                                                <p class="text-truncate h">{{
+                                                    course.description }}
                                                     <a href="javascript:;" class="text-dark">
                                                         Read More
                                                     </a>
@@ -176,89 +174,8 @@
                                                 <div class="author">
                                                     <img src="/img/backgrounds/curved13.jpg" alt="..."
                                                         class="avatar avatar-sm shadow me-2" />
-                                                    <p class="my-auto">Katie Roof</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 ms-auto me-auto">
-                                    <div class="card card-blog mt-5 p-2">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="card-image position-relative border-radius-lg">
-                                                    <div class="blur-shadow-image">
-                                                        <img class="img border-radius-lg"
-                                                            src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/color-cart.jpg" />
-                                                        <button href="javascript:;"
-                                                            class="btn btn-white btn-icon-only btn-rounded z-index-2 position-absolute end-5 top-7"
-                                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            aria-label="Add to watchlist"
-                                                            data-bs-original-title="Add to watchlist"
-                                                            aria-describedby="tooltip580017">
-                                                            <i class="ni ni-favourite-28"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-7 my-auto ms-md-3 mt-md-auto mt-4">
-                                                <h3 class="w-100 text-truncate">
-                                                    <a href="javascript:;" class="text-dark font-weight-normal">Miami raised
-                                                        $65 million for pet sittingsitting
-                                                        sitting</a>
-                                                </h3>
-                                                <p class="text-truncate h">
-                                                    Finding temporary housing for dog should be as easy as
-                                                    renting an Airbnb.
-                                                    <a href="javascript:;" class="text-dark">
-                                                        Read More
-                                                    </a>
-                                                </p>
-                                                <div class="author">
-                                                    <img src="/img/backgrounds/curved13.jpg" alt="..."
-                                                        class="avatar avatar-sm shadow me-2" />
-                                                    <p class="my-auto">Katie Roof</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 ms-auto me-auto">
-                                    <div class="card card-blog mt-5 p-2">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="card-image position-relative border-radius-lg">
-                                                    <div class="blur-shadow-image">
-                                                        <img class="img border-radius-lg"
-                                                            src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/color-cart.jpg" />
-                                                        <button href="javascript:;"
-                                                            class="btn btn-white btn-icon-only btn-rounded z-index-2 position-absolute end-5 top-7"
-                                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            aria-label="Add to watchlist"
-                                                            data-bs-original-title="Add to watchlist"
-                                                            aria-describedby="tooltip580017">
-                                                            <i class="ni ni-favourite-28"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-7 my-auto ms-md-3 mt-md-auto mt-4">
-                                                <h3 class="w-100 text-truncate">
-                                                    <a href="javascript:;" class="text-dark font-weight-normal">Miami raised
-                                                        $65 million for pet sittingsitting
-                                                        sitting</a>
-                                                </h3>
-                                                <p class="text-truncate h">
-                                                    Finding temporary housing for dog should be as easy as
-                                                    renting an Airbnb.
-                                                    <a href="javascript:;" class="text-dark">
-                                                        Read More
-                                                    </a>
-                                                </p>
-                                                <div class="author">
-                                                    <img src="/img/backgrounds/curved13.jpg" alt="..."
-                                                        class="avatar avatar-sm shadow me-2" />
-                                                    <p class="my-auto">Katie Roof</p>
+                                                    <p class="my-auto">{{
+                                                        course.instructorName }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -542,8 +459,8 @@ export default {
             });
         CoursesService.getCourses().then(
             (courses) => {
-                this.courses = courses;
-                console.log(courses);
+                this.courses = courses.content;
+                console.log(this.courses);
             }
         ).catch(
             err => {
